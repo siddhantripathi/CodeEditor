@@ -4,9 +4,7 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**",
-      "**/*.env*",
-      "**/serviceAccountKey.json"
+      "**/node_modules/**"
     ],
     "rewrites": [
       {
@@ -16,7 +14,16 @@
     ],
     "headers": [
       {
-        "source": "**/*.@(css|js)",
+        "source": "**/*.js",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "application/javascript"
+          }
+        ]
+      },
+      {
+        "source": "**/*.css",
         "headers": [
           {
             "key": "Content-Type",
@@ -27,10 +34,6 @@
     ]
   },
   "functions": {
-    "source": ".",
-    "runtime": "python312",
-    "env": {
-      "source": ".env"
-    }
+    "source": "functions"
   }
 } 
