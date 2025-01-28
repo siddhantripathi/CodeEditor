@@ -11,10 +11,24 @@
         "source": "**",
         "function": "handler"
       }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          {
+            "key": "Content-Type",
+            "value": "text/css"
+          }
+        ]
+      }
     ]
   },
   "functions": {
     "source": ".",
-    "runtime": "python311"
+    "runtime": "python311",
+    "env": {
+      "source": ".env"
+    }
   }
 } 

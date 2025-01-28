@@ -6,6 +6,7 @@ import bcrypt
 from datetime import datetime
 import os
 from dotenv import load_dotenv
+from firebase_config import get_firebase_credentials, get_database_url
 
 # Load environment variables
 load_dotenv()
@@ -15,9 +16,9 @@ app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Initialize Firebase
 try:
-    cred = credentials.Certificate("serviceAccountKey.json")
+    cred = get_firebase_credentials()
     firebase_admin.initialize_app(cred, {
-        'databaseURL': 'https://codeeditor-db5bc-default-rtdb.firebaseio.com/'
+        'databaseURL': get_database_url()
     })
     ref = db.reference('/')
     print("Firebase connection successful!")
@@ -162,62 +163,37 @@ def problem(problem_id):
                                          key=lambda x: x['created_at'], 
                                          reverse=True) if submissions else [])
 
-@app.route('/execute', methods=['POST'])
-def execute_code():
+@app.route('/playground')
+def playground():
+    return render_template('playground.html')
+
+@app.route('/execute_playground', methods=['POST'])
+def execute_playground():
+    if not request.is_json:
+        return jsonify({'error': 'Invalid request format'}), 400
+        
     code = request.json.get('code')
-    problem_id = request.json.get('problem_id')
     
-    # Get problem test cases
-    problem_data = db.reference(f'/problems/{problem_id}').get()
-    if not problem_data or 'test_cases' not in problem_data:
-        return jsonify({
-            'error': 'Problem or test cases not found',
-            'output': None
-        })
+    if not code:
+        return jsonify({'error': 'No code provided'}), 400
     
     try:
+        # Capture stdout to get print statements
+        import io
+        import sys
+        output_buffer = io.StringIO()
+        sys.stdout = output_buffer
+        
         # Create a safe execution environment
         local_vars = {}
         exec(code, {'__builtins__': __builtins__}, local_vars)
         
-        # Run test cases
-        test_results = []
-        for i, test_case in enumerate(problem_data['test_cases']):
-            try:
-                # Get the main function name from the code
-                func_name = code.split('def ')[1].split('(')[0].strip()
-                func = local_vars[func_name]
-                
-                # Execute the function with test inputs
-                actual_output = func(*test_case['input'])
-                passed = actual_output == test_case['output']
-                
-                test_results.append({
-                    'passed': passed,
-                    'expected': test_case['output'],
-                    'actual': actual_output
-                })
-            except Exception as e:
-                test_results.append({
-                    'passed': False,
-                    'error': str(e)
-                })
-        
-        # Save submission for logged-in users
-        if current_user.is_authenticated:
-            submissions_ref = db.reference('/submissions')
-            submission_data = {
-                'user_id': current_user.id,
-                'problem_id': problem_id,
-                'code': code,
-                'test_results': test_results,
-                'created_at': datetime.utcnow().isoformat()
-            }
-            submissions_ref.push(submission_data)
+        # Restore stdout and get the output
+        sys.stdout = sys.__stdout__
+        output = output_buffer.getvalue()
         
         return jsonify({
-            'output': 'Code executed successfully',
-            'test_results': test_results,
+            'output': output or 'Code executed successfully (no output)',
             'error': None
         })
         
@@ -225,6 +201,79 @@ def execute_code():
         return jsonify({
             'error': str(e),
             'output': None
+        })
+
+@app.route('/execute', methods=['POST'])
+def execute_code():
+    if not request.is_json:
+        return jsonify({'error': 'Invalid request format'}), 400
+        
+    code = request.json.get('code')
+    problem_id = request.json.get('problem_id')
+    
+    if not code:
+        return jsonify({'error': 'No code provided'}), 400
+
+    try:
+        # Capture stdout
+        import io
+        import sys
+        output_buffer = io.StringIO()
+        sys.stdout = output_buffer
+        
+        # Execute the code
+        local_vars = {}
+        exec(code, {'__builtins__': __builtins__}, local_vars)
+        
+        # Get printed output
+        code_output = output_buffer.getvalue()
+        sys.stdout = sys.__stdout__  # Restore stdout
+        
+        # Run test cases
+        test_results = []
+        if problem_id:
+            problem_data = db.reference(f'/problems/{problem_id}').get()
+            if problem_data and 'test_cases' in problem_data:
+                try:
+                    func_name = code.split('def ')[1].split('(')[0].strip()
+                    func = local_vars.get(func_name)
+                    
+                    if not func:
+                        raise ValueError(f"Function '{func_name}' not found")
+                    
+                    for test_case in problem_data['test_cases']:
+                        try:
+                            actual_output = func(*test_case['input'])
+                            passed = actual_output == test_case['output']
+                            test_results.append({
+                                'passed': passed,
+                                'input': test_case['input'],
+                                'expected': test_case['output'],
+                                'actual': actual_output
+                            })
+                        except Exception as e:
+                            test_results.append({
+                                'passed': False,
+                                'error': str(e)
+                            })
+                except Exception as e:
+                    return jsonify({
+                        'error': str(e),
+                        'code_output': code_output,
+                        'test_results': []
+                    })
+        
+        return jsonify({
+            'code_output': code_output,
+            'test_results': test_results,
+            'error': None
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'error': str(e),
+            'code_output': None,
+            'test_results': None
         })
 
 @app.route('/logout')

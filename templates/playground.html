@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block title %}Python Playground{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css" rel="stylesheet">
+<style>
+    .playground-container {
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .editor-container {
+        margin-bottom: 20px;
+    }
+    .output-container {
+        background: var(--code-bg);
+        padding: 15px;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+    #output {
+        white-space: pre-wrap;
+        font-family: monospace;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="playground-container">
+    <h1>Python Playground</h1>
+    <p>Write and execute Python code freely. Perfect for testing and experimenting!</p>
+    
+    <div class="editor-container">
+        <textarea id="code-editor">print("Hello, World!")</textarea>
+        <div class="button-container">
+            <button id="run-btn" class="btn">Run Code</button>
+        </div>
+    </div>
+    
+    <div class="output-container">
+        <h3>Output:</h3>
+        <pre id="output" class="output-text"></pre>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let editor = CodeMirror.fromTextArea(document.getElementById('code-editor'), {
+        mode: 'python',
+        theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dracula' : 'default',
+        lineNumbers: true,
+        indentUnit: 4,
+        autoCloseBrackets: true,
+        matchBrackets: true,
+        lineWrapping: true
+    });
+
+    document.getElementById('run-btn').addEventListener('click', function() {
+        const code = editor.getValue();
+        const outputElement = document.getElementById('output');
+        const runBtn = this;
+        
+        runBtn.disabled = true;
+        runBtn.textContent = 'Running...';
+        
+        fetch('/execute_playground', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ code: code })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.error) {
+                showNotification('Error executing code', false);
+                outputElement.textContent = 'Error: ' + data.error;
+                outputElement.className = 'error-output';
+            } else {
+                if (data.output.trim()) {
+                    outputElement.textContent = data.output;
+                    outputElement.className = 'output-text';
+                    showNotification('Code executed successfully', true);
+                } else {
+                    outputElement.textContent = 'Code executed successfully (no output)';
+                    outputElement.className = 'output-text';
+                    showNotification('Code executed successfully', true);
+                }
+            }
+        })
+        .catch(error => {
+            showNotification('Error executing code', false);
+            outputElement.textContent = 'Error: ' + error.message;
+            outputElement.className = 'error-output';
+        })
+        .finally(() => {
+            runBtn.disabled = false;
+            runBtn.textContent = 'Run Code';
+        });
+    });
+});
+</script>
+{% endblock %} 

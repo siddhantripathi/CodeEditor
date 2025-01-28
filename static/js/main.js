@@ -1,5 +1,12 @@
 let editor;
 
+// Add this at the start of the file
+function applyTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    return savedTheme;
+}
+
 // Theme switching functionality
 function initializeTheme() {
     const themeToggle = document.getElementById('theme-toggle');
@@ -33,7 +40,9 @@ function initializeTheme() {
     });
 }
 
+// Call this immediately
 document.addEventListener('DOMContentLoaded', function() {
+    applyTheme();
     initializeTheme();
     
     // Initialize CodeMirror
