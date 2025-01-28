@@ -1,3 +1,4 @@
+
 let editor;
 
 // Add this at the start of the file
