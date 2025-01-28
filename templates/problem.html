@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ problem.title }} - Python Online Judge</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/monokai.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="navbar">
+            <div class="nav-left">
+                <h2>Python Online Judge</h2>
+                <a href="{{ url_for('problems') }}">Problems</a>
+            </div>
+            <div class="nav-right">
+                <button id="theme-toggle" class="btn theme-btn">
+                    <span class="light-icon">🌞</span>
+                    <span class="dark-icon">🌙</span>
+                </button>
+                {% if current_user.is_authenticated %}
+                    <span>Welcome, {{ current_user.username }}</span>
+                    <a href="{{ url_for('logout') }}" class="btn">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn">Register</a>
+                {% endif %}
+            </div>
+        </nav>
+        
+        <div class="problem-container">
+            <div class="problem-content">
+                <div class="problem-description">
+                    <h1>{{ problem.title }}</h1>
+                    <span class="difficulty {{ problem.difficulty.lower() }}">{{ problem.difficulty }}</span>
+                    <div class="description">
+                        {{ problem.description | safe }}
+                    </div>
+                    {% if not current_user.is_authenticated %}
+                        <div class="login-prompt">
+                            <p>Want to save your progress? <a href="{{ url_for('login') }}">Login</a> or <a href="{{ url_for('register') }}">Register</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+                
+                <div class="editor-container">
+                    <textarea id="code-editor">{{ problem.starter_code }}</textarea>
+                    <div class="button-container">
+                        <button id="run-btn" class="btn">Run Code</button>
+                    </div>
+                    <div class="output-container">
+                        <h3>Output:</h3>
+                        <pre id="output"></pre>
+                    </div>
+                </div>
+            </div>
+
+            {% if problem.video_id %}
+            <div class="solution-video">
+                <h2>Solution Explanation</h2>
+                <div class="video-container">
+                    <iframe 
+                        width="560" 
+                        height="315" 
+                        src="https://www.youtube.com/embed/{{ problem.video_id }}"
+                        title="YouTube video player" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="theme-switcher">
+        <button id="theme-toggle" class="theme-btn">
+            <span class="icon" id="theme-icon">🌙</span>
+            <span class="text" id="theme-text">Dark Mode</span>
+        </button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
