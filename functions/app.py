@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for, flash
+from flask import Flask, send_from_directory, render_template, request, jsonify, redirect, url_for, flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import firebase_admin
 from firebase_admin import credentials, db
@@ -11,7 +11,10 @@ from firebase_config import get_firebase_credentials, get_database_url
 # Load environment variables
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(__name__, 
+    static_folder='../public/static',  # Updated static folder path
+    template_folder='../templates'      # Updated template folder path
+)
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
 # Initialize Firebase
@@ -72,7 +75,12 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return redirect(url_for('problems'))
+    return send_from_directory('../public', 'index.html')
+
+# Static file handling
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('../public/static', path)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

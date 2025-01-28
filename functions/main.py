@@ -10,7 +10,9 @@ initialize_app()
 
 @https_fn.on_request()
 def handler(req: https_fn.Request) -> https_fn.Response:
-    return app(req.environ, lambda x, y: [])
+    """Handle all incoming requests"""
+    with app.request_context(req.environ):
+        return app.full_dispatch_request()
 
 # initialize_app()
 #
