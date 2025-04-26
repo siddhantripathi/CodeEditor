@@ -1,12 +1,11 @@
 from flask import Flask, send_from_directory, render_template, request, jsonify, redirect, url_for, flash
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 import firebase_admin
-from firebase_admin import credentials, db
+from firebase_admin import credentials, db, firestore
 import bcrypt
 from datetime import datetime
 import os
 from dotenv import load_dotenv
-from firebase_config import get_firebase_credentials, get_database_url
 
 # Load environment variables
 load_dotenv()
@@ -17,17 +16,24 @@ app = Flask(__name__,
 )
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
 
-# Initialize Firebase
+# Initialize Firebase if not already initialized
 try:
-    cred = get_firebase_credentials()
+    firebase_admin.get_app()
+except ValueError:
+    # Get database URL from environment or Firebase default
+    db_url = os.getenv('FB_DATABASE_URL', 'https://codeeditor-db5bc-default-rtdb.firebaseio.com')
+    
+    # Initialize with explicit database URL
+    cred = credentials.ApplicationDefault()
     firebase_admin.initialize_app(cred, {
-        'databaseURL': get_database_url()
+        'databaseURL': db_url
     })
-    ref = db.reference('/')
-    print("Firebase connection successful!")
-except Exception as e:
-    print(f"Firebase connection error: {str(e)}")
-    raise
+
+# Create Firestore client
+firestore_db = firestore.client()
+
+# Create Realtime Database reference
+rtdb_ref = db.reference('/')
 
 # Initialize Flask-Login
 login_manager = LoginManager()
@@ -75,7 +81,7 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return send_from_directory('../public', 'index.html')
+    return "Hello World! Firebase Flask App is running."
 
 # Static file handling
 @app.route('/static/<path:path>')

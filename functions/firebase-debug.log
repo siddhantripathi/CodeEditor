@@ -1,0 +1,272 @@
+[debug] [2025-04-25T22:16:52.819Z] ----------------------------------------------------------------------
+[debug] [2025-04-25T22:16:52.821Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\siddh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2025-04-25T22:16:52.821Z] CLI Version:   14.1.0
+[debug] [2025-04-25T22:16:52.821Z] Platform:      win32
+[debug] [2025-04-25T22:16:52.822Z] Node Version:  v20.18.0
+[debug] [2025-04-25T22:16:52.822Z] Time:          Fri Apr 25 2025 15:16:52 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-04-25T22:16:52.822Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-25T22:16:52.981Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-25T22:16:52.982Z] > authorizing via signed-in user (groundsnail01@gmail.com)
+[debug] [2025-04-25T22:16:52.983Z] [iam] checking project codeeditor-db5bc for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-04-25T22:16:52.984Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:52.984Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:52.985Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions [none]
+[debug] [2025-04-25T22:16:52.986Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:16:52.986Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-04-25T22:16:53.151Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions 200
+[debug] [2025-04-25T22:16:53.152Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-04-25T22:16:53.153Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.153Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.153Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-04-25T22:16:53.153Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-04-25T22:16:53.297Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-04-25T22:16:53.298Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-04-25T22:16:53.299Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.299Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.300Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc [none]
+[debug] [2025-04-25T22:16:53.657Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc 200
+[debug] [2025-04-25T22:16:53.657Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc {"projectId":"codeeditor-db5bc","projectNumber":"242792366565","displayName":"CodeEditor","name":"projects/codeeditor-db5bc","resources":{"hostingSite":"codeeditor-db5bc","realtimeDatabaseInstance":"codeeditor-db5bc-default-rtdb"},"state":"ACTIVE","etag":"1_074c2d56-c3d3-4c4c-bc00-b8c6bc399bb2"}
+[info] 
+[info] === Deploying to 'codeeditor-db5bc'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2025-04-25T22:16:53.661Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.662Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.662Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc [none]
+[debug] [2025-04-25T22:16:53.751Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc 200
+[debug] [2025-04-25T22:16:53.752Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc {"projectNumber":"242792366565","projectId":"codeeditor-db5bc","lifecycleState":"ACTIVE","name":"CodeEditor","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-01-27T22:49:28.585702Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-04-25T22:16:53.754Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.754Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.754Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.754Z] Checked if tokens are valid: true, expires at: 1745622455394
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-04-25T22:16:53.755Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.755Z] Checked if tokens are valid: true, expires at: 1745622455394
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-04-25T22:16:53.756Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.756Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:53.756Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-04-25T22:16:53.756Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:16:53.757Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-04-25T22:16:53.757Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:16:53.758Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com [none]
+[debug] [2025-04-25T22:16:53.758Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:16:53.760Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com [none]
+[debug] [2025-04-25T22:16:53.760Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:16:54.157Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com 200
+[debug] [2025-04-25T22:16:54.157Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-04-25T22:16:54.159Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com 200
+[debug] [2025-04-25T22:16:54.159Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-04-25T22:16:54.160Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com 200
+[debug] [2025-04-25T22:16:54.160Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-04-25T22:16:54.327Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com 200
+[debug] [2025-04-25T22:16:54.328Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-04-25T22:16:54.329Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:54.330Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:54.330Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc/adminSdkConfig [none]
+[debug] [2025-04-25T22:16:54.682Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc/adminSdkConfig 200
+[debug] [2025-04-25T22:16:54.683Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc/adminSdkConfig {"projectId":"codeeditor-db5bc","databaseURL":"https://codeeditor-db5bc-default-rtdb.firebaseio.com","storageBucket":"codeeditor-db5bc.firebasestorage.app"}
+[debug] [2025-04-25T22:16:54.684Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:54.685Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:16:54.685Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/codeeditor-db5bc/configs [none]
+[debug] [2025-04-25T22:16:54.888Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/codeeditor-db5bc/configs 200
+[debug] [2025-04-25T22:16:54.889Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/codeeditor-db5bc/configs {}
+[debug] [2025-04-25T22:16:54.891Z] Customer code is not Node
+[debug] [2025-04-25T22:16:54.892Z] Validating python source
+[debug] [2025-04-25T22:16:54.893Z] Building python source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-04-25T22:16:54.894Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-04-25T22:16:54.906Z] Running command with virtualenv: command="C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Scripts\activate.bat", args=["","&&","python.exe","-c","\"import firebase_functions; import os; print(os.path.dirname(firebase_functions.__file__))\""]
+[debug] [2025-04-25T22:16:55.025Z] stdout: C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\firebase_functions
+
+[debug] [2025-04-25T22:16:55.033Z] Running admin server with args: ["python.exe","\"C:\\Users\\siddh\\OneDrive\\Desktop\\Website_attempt\\Code_editor\\functions\\venv\\Lib\\site-packages\\firebase_functions\\private\\serving.py\""] and env: {"FIREBASE_CONFIG":"{\"projectId\":\"codeeditor-db5bc\",\"databaseURL\":\"https://codeeditor-db5bc-default-rtdb.firebaseio.com\",\"storageBucket\":\"codeeditor-db5bc.firebasestorage.app\"}","GCLOUD_PROJECT":"codeeditor-db5bc","GOOGLE_CLOUD_QUOTA_PROJECT":"codeeditor-db5bc","ADMIN_PORT":"8081"} in C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions
+[debug] [2025-04-25T22:16:55.034Z] Running command with virtualenv: command="C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Scripts\activate.bat", args=["","&&","python.exe","\"C:\\Users\\siddh\\OneDrive\\Desktop\\Website_attempt\\Code_editor\\functions\\venv\\Lib\\site-packages\\firebase_functions\\private\\serving.py\""]
+[info]  * Serving Flask app 'serving'
+ * Debug mode: off
+
+[error] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8081
+
+[error] Press CTRL+C to quit
+
+[error] [2025-04-25 15:16:55,905] ERROR in app: Exception on /__/functions.yaml [GET]
+Traceback (most recent call last):
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\firebase_functions\private\serving.py", line 122, in get_functions_yaml
+    functions = get_functions()
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\firebase_functions\private\serving.py", line 40, in get_functions
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\main.py", line 7, in <module>
+    from app import app
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\app.py", line 2, in <module>
+    from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+ModuleNotFoundError: No module named 'flask_login'
+
+[debug] [2025-04-25T22:16:55.908Z] Got response code 500; body <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+[error] 127.0.0.1 - - [25/Apr/2025 15:16:55] "GET /__/functions.yaml HTTP/1.1" 500 -
+
+[error] 127.0.0.1 - - [25/Apr/2025 15:16:55] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] 
+[error] Error: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error
+[debug] [2025-04-25T22:22:50.998Z] ----------------------------------------------------------------------
+[debug] [2025-04-25T22:22:51.000Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\siddh\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --debug
+[debug] [2025-04-25T22:22:51.000Z] CLI Version:   14.1.0
+[debug] [2025-04-25T22:22:51.001Z] Platform:      win32
+[debug] [2025-04-25T22:22:51.001Z] Node Version:  v20.18.0
+[debug] [2025-04-25T22:22:51.001Z] Time:          Fri Apr 25 2025 15:22:51 GMT-0700 (Pacific Daylight Time)
+[debug] [2025-04-25T22:22:51.001Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-25T22:22:51.145Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-04-25T22:22:51.146Z] > authorizing via signed-in user (groundsnail01@gmail.com)
+[debug] [2025-04-25T22:22:51.147Z] [iam] checking project codeeditor-db5bc for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-04-25T22:22:51.148Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.148Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.149Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions [none]
+[debug] [2025-04-25T22:22:51.150Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:22:51.150Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-04-25T22:22:51.404Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions 200
+[debug] [2025-04-25T22:22:51.405Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-04-25T22:22:51.406Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.406Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.406Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2025-04-25T22:22:51.407Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-04-25T22:22:51.556Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2025-04-25T22:22:51.557Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/codeeditor-db5bc/serviceAccounts/codeeditor-db5bc@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2025-04-25T22:22:51.558Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.559Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.560Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc [none]
+[debug] [2025-04-25T22:22:51.755Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc 200
+[debug] [2025-04-25T22:22:51.756Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc {"projectId":"codeeditor-db5bc","projectNumber":"242792366565","displayName":"CodeEditor","name":"projects/codeeditor-db5bc","resources":{"hostingSite":"codeeditor-db5bc","realtimeDatabaseInstance":"codeeditor-db5bc-default-rtdb"},"state":"ACTIVE","etag":"1_074c2d56-c3d3-4c4c-bc00-b8c6bc399bb2"}
+[info] 
+[info] === Deploying to 'codeeditor-db5bc'...
+[info] 
+[info] i  deploying functions, hosting 
+[debug] [2025-04-25T22:22:51.765Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.765Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.766Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc [none]
+[debug] [2025-04-25T22:22:51.886Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc 200
+[debug] [2025-04-25T22:22:51.887Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/codeeditor-db5bc {"projectNumber":"242792366565","projectId":"codeeditor-db5bc","lifecycleState":"ACTIVE","name":"CodeEditor","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-01-27T22:49:28.585702Z"}
+[info] i  functions: preparing codebase default for deployment 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[debug] [2025-04-25T22:22:51.889Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.890Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.890Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.890Z] Checked if tokens are valid: true, expires at: 1745622455394
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2025-04-25T22:22:51.891Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.891Z] Checked if tokens are valid: true, expires at: 1745622455394
+[info] i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled... 
+[debug] [2025-04-25T22:22:51.892Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.892Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:51.893Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com [none]
+[debug] [2025-04-25T22:22:51.893Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:22:51.894Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com [none]
+[debug] [2025-04-25T22:22:51.894Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:22:51.896Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com [none]
+[debug] [2025-04-25T22:22:51.897Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:22:51.899Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com [none]
+[debug] [2025-04-25T22:22:51.899Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com x-goog-quota-user=projects/codeeditor-db5bc
+[debug] [2025-04-25T22:22:52.290Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com 200
+[debug] [2025-04-25T22:22:52.291Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudfunctions.googleapis.com [omitted]
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2025-04-25T22:22:52.294Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com 200
+[debug] [2025-04-25T22:22:52.294Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/cloudbuild.googleapis.com [omitted]
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2025-04-25T22:22:52.310Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com 200
+[debug] [2025-04-25T22:22:52.310Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/artifactregistry.googleapis.com [omitted]
+[info] +  artifactregistry: required API artifactregistry.googleapis.com is enabled 
+[debug] [2025-04-25T22:22:52.312Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com 200
+[debug] [2025-04-25T22:22:52.313Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/codeeditor-db5bc/services/runtimeconfig.googleapis.com [omitted]
+[debug] [2025-04-25T22:22:52.313Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:52.313Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:52.314Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc/adminSdkConfig [none]
+[debug] [2025-04-25T22:22:52.680Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc/adminSdkConfig 200
+[debug] [2025-04-25T22:22:52.681Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/codeeditor-db5bc/adminSdkConfig {"projectId":"codeeditor-db5bc","databaseURL":"https://codeeditor-db5bc-default-rtdb.firebaseio.com","storageBucket":"codeeditor-db5bc.firebasestorage.app"}
+[debug] [2025-04-25T22:22:52.683Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:52.683Z] Checked if tokens are valid: true, expires at: 1745622455394
+[debug] [2025-04-25T22:22:52.684Z] >>> [apiv2][query] GET https://runtimeconfig.googleapis.com/v1beta1/projects/codeeditor-db5bc/configs [none]
+[debug] [2025-04-25T22:22:52.885Z] <<< [apiv2][status] GET https://runtimeconfig.googleapis.com/v1beta1/projects/codeeditor-db5bc/configs 200
+[debug] [2025-04-25T22:22:52.885Z] <<< [apiv2][body] GET https://runtimeconfig.googleapis.com/v1beta1/projects/codeeditor-db5bc/configs {}
+[debug] [2025-04-25T22:22:52.887Z] Customer code is not Node
+[debug] [2025-04-25T22:22:52.888Z] Validating python source
+[debug] [2025-04-25T22:22:52.888Z] Building python source
+[info] i  functions: Loading and analyzing source code for codebase default to determine what to deploy 
+[debug] [2025-04-25T22:22:52.890Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-04-25T22:22:52.898Z] Running command with virtualenv: command="C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Scripts\activate.bat", args=["","&&","python.exe","-c","\"import firebase_functions; import os; print(os.path.dirname(firebase_functions.__file__))\""]
+[debug] [2025-04-25T22:22:53.010Z] stdout: C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\firebase_functions
+
+[debug] [2025-04-25T22:22:53.017Z] Running admin server with args: ["python.exe","\"C:\\Users\\siddh\\OneDrive\\Desktop\\Website_attempt\\Code_editor\\functions\\venv\\Lib\\site-packages\\firebase_functions\\private\\serving.py\""] and env: {"FIREBASE_CONFIG":"{\"projectId\":\"codeeditor-db5bc\",\"databaseURL\":\"https://codeeditor-db5bc-default-rtdb.firebaseio.com\",\"storageBucket\":\"codeeditor-db5bc.firebasestorage.app\"}","GCLOUD_PROJECT":"codeeditor-db5bc","GOOGLE_CLOUD_QUOTA_PROJECT":"codeeditor-db5bc","ADMIN_PORT":"8081"} in C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions
+[debug] [2025-04-25T22:22:53.018Z] Running command with virtualenv: command="C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Scripts\activate.bat", args=["","&&","python.exe","\"C:\\Users\\siddh\\OneDrive\\Desktop\\Website_attempt\\Code_editor\\functions\\venv\\Lib\\site-packages\\firebase_functions\\private\\serving.py\""]
+[info]  * Serving Flask app 'serving'
+ * Debug mode: off
+
+[error] WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:8081
+
+[error] Press CTRL+C to quit
+
+[error] [2025-04-25 15:22:53,803] ERROR in app: Exception on /__/functions.yaml [GET]
+Traceback (most recent call last):
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\flask\app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\firebase_functions\private\serving.py", line 122, in get_functions_yaml
+    functions = get_functions()
+                ^^^^^^^^^^^^^^^
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\venv\Lib\site-packages\firebase_functions\private\serving.py", line 40, in get_functions
+    spec.loader.exec_module(module)
+  File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\main.py", line 7, in <module>
+    from app import app
+  File "C:\Users\siddh\OneDrive\Desktop\Website_attempt\Code_editor\functions\app.py", line 9, in <module>
+    from firebase_config import get_firebase_credentials, get_database_url
+ModuleNotFoundError: No module named 'firebase_config'
+
+[debug] [2025-04-25T22:22:53.806Z] Got response code 500; body <!doctype html>
+<html lang=en>
+<title>500 Internal Server Error</title>
+<h1>Internal Server Error</h1>
+<p>The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.</p>
+
+[error] 127.0.0.1 - - [25/Apr/2025 15:22:53] "GET /__/functions.yaml HTTP/1.1" 500 -
+
+[error] 127.0.0.1 - - [25/Apr/2025 15:22:53] "GET /__/quitquitquit HTTP/1.1" 200 -
+
+[error] 
+[error] Error: Functions codebase could not be analyzed successfully. It may have a syntax or runtime error

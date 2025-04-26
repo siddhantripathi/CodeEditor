@@ -1,11 +1,3 @@
+# Run this in Python (terminal or file)
 import secrets
-
-# Generate SECRET_KEY
-secret_key = secrets.token_hex(32)
-print("\nSECRET_KEY:")
-print(secret_key)
-
-# Generate JWT_SECRET_KEY
-jwt_secret_key = secrets.token_hex(32)
-print("\nJWT_SECRET_KEY:")
-print(jwt_secret_key) 
+print(secrets.token_hex(24))  # Will output something like: 3d6f45a5c242fcde0a3a6517a24be4a43c561273af9e316354b7
